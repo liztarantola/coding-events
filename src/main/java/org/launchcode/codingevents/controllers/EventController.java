@@ -57,7 +57,7 @@ public class EventController {
     public String displayEditForm(Model model, @PathVariable int eventId) {
         model.addAttribute("title", "Edit Events");
         model.addAttribute("Edit Event Name",EventData.getById(eventId));
-        return "events/edit/eventId";
+        return "events/edit";
     }
 
     @PostMapping("edit/{eventId}")
