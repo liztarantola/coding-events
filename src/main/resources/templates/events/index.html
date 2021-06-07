@@ -11,6 +11,9 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Location</th>
+                <th>Registration Required</th>
+                <th>Number Of Attendees</th>
                 <th>Contact Email</th>
                 <th>Type</th>
             </tr>
@@ -19,6 +22,9 @@
             <td th:text="${event.id}"></td>
             <td th:text="${event.name}"></td>
             <td th:text="${event.description}"></td>
+            <td th:text="${event.location}"></td>
+            <td th:text="${event.registrationRequired}"></td>
+            <td th:text="${event.numberOfAttendees}"></td>
             <td th:text="${event.contactEmail}"></td>
             <td th:text="${event.type.displayName}"></td>
         </tr>
