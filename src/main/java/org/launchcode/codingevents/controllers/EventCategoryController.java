@@ -28,14 +28,14 @@ public class EventCategoryController {
         return "eventCategories/index";
     }
 
-    @GetMapping
+    @GetMapping("create")
     public String renderCreateEventCategoryForm(Model model) {
         model.addAttribute("title", "Create Category");
         model.addAttribute(new EventCategory());
         return  "eventCategories/create";
     }
 
-    @PostMapping
+    @PostMapping("create")
     public String processCreateEventCategoryForm(@ModelAttribute @Valid EventCategory newEventCategory, Errors errors, Model model) {
 
         if(errors.hasErrors()){
@@ -43,7 +43,7 @@ public class EventCategoryController {
             return "eventCategories/create";
         }
         model.addAttribute(new EventCategory());
-//        eventCategoryRepository.save(newEventCategory);
+
         return "redirect:";
     }
 }
