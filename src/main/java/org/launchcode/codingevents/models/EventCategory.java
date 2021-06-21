@@ -14,7 +14,8 @@ public class EventCategory {
     private int id;
     private String name;
 
-    public EventCategory(@Size(min= 3, message = "Name must be at least 3 characters long")String name) {
+    @Size(min= 3, message = "Name must be at least 3 characters long")
+    public EventCategory(String name) {
         this.name = name;
     }
 
