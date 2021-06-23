@@ -2,14 +2,18 @@ package org.launchcode.codingevents.models;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
 public class EventCategory extends AbstractEntity {
 
+    @Size(min= 3, message = "Name must be at least 3 characters long")
     private String name;
 
-    @Size(min= 3, message = "Name must be at least 3 characters long")
+    private final List<Event> events = new ArrayList<>();
+
     public EventCategory(String name) {
         this.name = name;
     }

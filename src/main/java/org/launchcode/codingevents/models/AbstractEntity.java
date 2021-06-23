@@ -12,12 +12,6 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-//    public AbstractEntity(int id) {
-//        this.id = id;
-//    }
-//
-//    public AbstractEntity() {}
-
     public int getId() {
         return id;
     }
