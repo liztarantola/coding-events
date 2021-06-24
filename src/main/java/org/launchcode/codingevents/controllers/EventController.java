@@ -27,7 +27,7 @@ public class EventController {
 
     @GetMapping
     public String displayAllEvents(@RequestParam(required = false) Integer categoryId, Model model) {
-        if(categoryId == null) {
+        if (categoryId == null) {
             model.addAttribute("title", "All Events");
             model.addAttribute("events", eventRepository.findAll());
         } else {
@@ -43,7 +43,7 @@ public class EventController {
         return "events/index";
     }
 
-//    lives at /events/create
+    //    lives at /events/create
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
@@ -52,11 +52,11 @@ public class EventController {
         return "events/create";
     }
 
-//    its ok to have the same path as method above bc they handle 2 different types of requests
+    //    its ok to have the same path as method above bc they handle 2 different types of requests
     @PostMapping("create")
     public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
 
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
             return "events/create";
         }
@@ -81,5 +81,20 @@ public class EventController {
         }
 
         return "redirect:";
+    }
+
+    @GetMapping("detail")
+    public String displayEventDetails(@RequestParam Integer eventId, Model model) {
+        Optional<Event> result = eventRepository.findById(eventId);
+
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Invalid Event ID: " + eventId);
+        } else {
+            Event event = result.get();
+            model.addAttribute("title", event.getName() + "Details");
+            model.addAttribute("event", event);
+        }
+
+        return "events/detail";
     }
 }
